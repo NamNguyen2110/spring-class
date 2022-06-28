@@ -24,7 +24,7 @@ public class UserController {
         return ResponseEntity
                 .ok(
                         userService.search(
-                                (x_permission != null && !permission.equals(""))
+                                (x_permission != null && !x_permission.equals(""))
                                         ? x_permission :
                                         permission));
     }
