@@ -7,4 +7,5 @@ import java.util.List;
 public interface UserService {
     List<Users> search(String permission);
     Users create(Users users);
+    String fakeData();
 }

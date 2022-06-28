@@ -1,7 +1,6 @@
 package com.example.springclass.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import io.swagger.annotations.ApiModelProperty;
 import lombok.*;
 
 import javax.persistence.*;

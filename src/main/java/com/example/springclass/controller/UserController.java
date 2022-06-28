@@ -18,14 +18,24 @@ public class UserController {
     private final UserService userService;
 
     @GetMapping("")
-    @ApiOperation(value = "Get all users", tags = "Users Rest Controller")
-    @ApiResponses(value = {@ApiResponse(code = 200, message = "Success"), @ApiResponse(code = 400, message = "Bad request"), @ApiResponse(code = 500, message = "Internal server error")})
-    private ResponseEntity<?> search(@RequestHeader(value = "x-permission", required = false) String x_permission, @RequestParam(value = "permission", required = false) String permission) {
-        return ResponseEntity.ok(userService.search((x_permission != null && !permission.equals("")) ? x_permission : permission));
+    private ResponseEntity<?> search(
+            @RequestHeader(value = "x-permission", required = false) String x_permission,
+            @RequestParam(value = "permission", required = false) String permission) {
+        return ResponseEntity
+                .ok(
+                        userService.search(
+                                (x_permission != null && !permission.equals(""))
+                                        ? x_permission :
+                                        permission));
     }
 
     @PostMapping("")
     private ResponseEntity<?> create(@RequestBody Users users) {
         return ResponseEntity.ok(userService.create(users));
+    }
+
+    @GetMapping("/fake")
+    private String fakeData(){
+        return userService.fakeData();
     }
 }
